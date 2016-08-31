@@ -11,6 +11,7 @@ install:
   - sudo modprobe ip_vs
 script:
   - flake8 .
-  - sudo bash -c "source ${HOME}/virtualenv/python${TRAVIS_PYTHON_VERSION}/bin/activate && nosetests -v --with-coverage tests"
+  - sudo bash -c "source ${HOME}/virtualenv/python${TRAVIS_PYTHON_VERSION}/bin/activate &&
+      nosetests -v --with-coverage --cover-erase --cover-package=gnlpy tests"
 after_success:
   - codecov
