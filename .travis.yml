@@ -7,8 +7,10 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install .
-  - pip install flake8 coverage
+  - pip install flake8 coverage codecov
   - sudo modprobe ip_vs
 script:
   - flake8 .
   - sudo bash -c "source ${HOME}/virtualenv/python${TRAVIS_PYTHON_VERSION}/bin/activate && nosetests -v --with-coverage tests"
+after_success:
+  - codecov
